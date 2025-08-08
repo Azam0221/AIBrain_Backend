@@ -46,6 +46,8 @@ public class AuthService {
                             Map.of("email", "This email is already registered"), LocalDateTime.now()));
         }
 
+
+
         else {
         User user = new User();
 

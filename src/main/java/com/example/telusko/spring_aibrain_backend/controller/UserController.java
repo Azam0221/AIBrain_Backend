@@ -6,6 +6,7 @@ import com.example.telusko.spring_aibrain_backend.model.LoginRequest;
 import com.example.telusko.spring_aibrain_backend.model.RegisterRequest;
 import com.example.telusko.spring_aibrain_backend.model.User;
 import com.example.telusko.spring_aibrain_backend.service.AuthService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,12 +22,12 @@ public class UserController {
 
 
     @PostMapping("/userLogin")
-    public AuthResponse userLogin(@RequestBody LoginRequest loginRequest){
+    public AuthResponse userLogin(@Valid @RequestBody LoginRequest loginRequest){
         return authService.loginVerify(loginRequest).getBody();
     }
 
     @PostMapping("/userRegister")
-    public ResponseEntity<AuthResponse> userRegister(@RequestBody RegisterRequest registerRequest){
+    public ResponseEntity<AuthResponse> userRegister(@Valid @RequestBody RegisterRequest registerRequest){
         System.out.println("Registration....");
 
          return authService.register(registerRequest);
